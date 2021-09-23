@@ -45,6 +45,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+This project requires a local Postgresql installation. If using a local Postgres database, see `app.module.ts` for credentials, and make sure there are matching credentials in the database and the source code.
+
 ## Test
 
 ```bash
