@@ -20,7 +20,5 @@ import { FlightsModule } from './flights/flights.module';
     }),
     FlightsModule,
   ],
-  controllers: [AppController, FlightsController],
-  providers: [AppService],
 })
 export class AppModule {}
