@@ -2,7 +2,5 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
+  // Put methods here to provide data to app.controller
 }
