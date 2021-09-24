@@ -32,7 +32,12 @@
 $ npm install
 ```
 
+This project requires a local Postgresql installation. If using a local Postgres database, see `app.module.ts` for credentials, and make sure there are matching credentials in the database and the source code.
+
 ## Running the app
+
+Run a local Postgresql database server.
+Instructions: (https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html)
 
 ```bash
 # development
@@ -44,8 +49,6 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
-This project requires a local Postgresql installation. If using a local Postgres database, see `app.module.ts` for credentials, and make sure there are matching credentials in the database and the source code.
 
 ## Test
 
