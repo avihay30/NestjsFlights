@@ -37,4 +37,14 @@ export class FlightsController {
   async delete(@Param('id') id): Promise<any> {
     return this.flightService.delete(id);
   }
+
+  @Get('cities/origins')
+  getOrigins(): Promise<string[]> {
+    return this.flightService.getFlightOrigins();
+  }
+
+  @Get('cities/destinations')
+  getDestinations(): Promise<string[]> {
+    return this.flightService.getFlightDestinations();
+  }
 }
