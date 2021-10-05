@@ -12,6 +12,7 @@ export class FlightsService {
   ) {}
 
   async create(flight: Flight): Promise<any> {
+    this.prepFlight(flight);
     return await this.flightRepository.save(flight);
   }
 
@@ -25,12 +26,13 @@ export class FlightsService {
 
   async query(orig: string, dest: string): Promise<any> {
     return await this.flightRepository.find({
-      origin: orig,
-      destination: dest,
+      origin: orig.trim().toLowerCase(),
+      destination: dest.trim().toLowerCase(),
     });
   }
 
   async update(flight: Flight): Promise<UpdateResult> {
+    this.prepFlight(flight);
     return await this.flightRepository.update(flight.id, flight);
   }
 
@@ -38,11 +40,21 @@ export class FlightsService {
     return this.flightRepository.delete(id);
   }
 
-  async getFlightOrigins(): Promise<string[]> {
+  async flightOrigins(): Promise<string[]> {
     return this.flightRepository.query('SELECT DISTINCT origin FROM flights');
   }
 
   async getFlightDestinations(): Promise<string[]> {
     return this.flightRepository.query('SELECT DISTINCT destination FROM flights');
+  }
+
+  prepFlight(flight: Flight): void {
+    flight.origin = flight.origin.trim().toLowerCase();
+    flight.destination = flight.destination.trim().toLowerCase();
+  }
+
+  async isFlightExist(flightNum: number): Promise<boolean> {
+    const flight = await this.flightRepository.find({ flightNumber: flightNum });
+    return flight.length ? true : false;
   }
 }
